@@ -1,101 +1,50 @@
+from selenium import webdriver
+from selenium import webdriver
+from selenium.webdriver.support.select import Select
 import random
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
+import time
 
 
+#browser open
+options = webdriver.ChromeOptions() 
+options.add_argument("start-maximized")
+options.add_experimental_option("excludeSwitches", ["enable-automation"])
+options.add_experimental_option('useAutomationExtension', False)
+driver = webdriver.Chrome(options=options, executable_path=r"C:\repos\practice\My-Practice\chromedriver.exe")
+driver.get('https://www.instagram.com/accounts/emailsignup/?hl=en')
+
+# Phone Number or Email
 while True:
       Email = input("Enter your Email: ")
       if "@"and "." in Email:
-         print(Email)
+         print("\n")
          break
       else:
-         print("your email is incorrect")     
+         print("your email is incorrect") 
+WebDriverWait(driver, 20).until(EC.element_to_be_clickable((By.XPATH, "//input[@name='emailOrPhone']"))).send_keys(Email)
+
+# Full Name
+
 FullName = input("Enter your name :")
+driver.find_element_by_xpath("//input[@name='fullName']").send_keys(FullName)
+
+#User Name
+
 UserName = input("Enter your User Name: ")
-r = '{}'.format(random.randint(0, 1000))
+r = '{}'.format(random.randint(0, 10000))
 print(UserName,r)
-Password =input ("Enter your pasword: ")
+driver.find_element_by_xpath("//input[@name='username']").send_keys(UserName)
+explore=driver.find_element_by_xpath("//button[@class='sqdOP yWX7d    y3zKF     ']").click()
 
-tag_list=[Email,FullName]
-sel= FullName,UserName,Password,Email
-all_options = list(map(lambda op: op.text, sel.options))
-# print(all_options)
-
-xs= input("enter year")
-
-print(xs, xs in all_options)
-if xs in all_options:
-    sel.select_by_visible_text(xs)
-    print(sel.first_selected_option.text)
-else:
-    print("this value not exist")
+pasword = input("Enter your pasword: ")
+driver.find_element_by_xpath("//input[@name='password']").send_keys(pasword)
+# WebDriverWait(driver, 20).until(EC.element_to_be_clickable((By.XPATH, "//button[text()='Sign up']")))
 
 
 
 
 
 
-
-
-# num = input ("Enter number :")
-# print(num)
-# name1 = input("Enter name : ")
-# print(name1)
-  
-# # Printing type of input value
-# print ("type of number", type(num))
-# print ("type of name", type(name1))
-# print ("Please share the information asked for:\n" )
-
-# # inputing a string
-# name = input("Enter your name:")
-# # inputing a number
-# age = input("Enter your age:")
-
-# print ("Your name is: " + name);
-# # using str method to convert number to string
-# print ("and your age is:" + str(age))
-
-# def add(x, y):
-#    """This function adds two numbers"""
-
-#    return x + y
-
-# def subtract(x, y):
-#    """This function subtracts two numbers"""
-
-#    return x - y
-
-# def multiply(x, y):
-#    """This function multiplies two numbers"""
-
-#    return x * y
-
-# def divide(x, y):
-#    """This function divides two numbers"""
-
-#    return x / y
-
-# # take input from the user
-# print("Select operation.")
-# print("1.Add")
-# print("2.Subtract")
-# print("3.Multiply")
-# print("4.Divide")
-
-# choice = input("Enter choice: 1, 2, 3, or 4: ")
-
-# num1 = int(input("Enter first number: "))
-# num2 = int(input("Enter second number: "))
-
-# if choice == '1':
-#    print(num1,"+",num2,"=", add(num1,num2))
-
-# elif choice == '2':
-#    print(num1,"-",num2,"=", subtract(num1,num2))
-
-# elif choice == '3':
-#    print(num1,"*",num2,"=", multiply(num1,num2))
-
-# elif choice == '4':
-#    print(num1,"/",num2,"=", divide(num1,num2))
-# else:
-#    print("Invalid input")
