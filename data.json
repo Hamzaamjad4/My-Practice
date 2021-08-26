@@ -1,0 +1,14 @@
+[
+   {
+    "emailOrPhone": "hamzaamjad42@yahoo.com",
+    "fullName": "Hamza",
+    "username": "hamza",
+    "password": "123456"
+   },
+   {
+      "emailOrPhone": "hamzaamjad999@yahoo.com",
+      "fullName": "Amjad",
+      "username": "Amjad1",
+      "password": "123456abcd"
+   }
+]
