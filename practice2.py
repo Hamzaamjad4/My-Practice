@@ -29,6 +29,8 @@ for d in data:
    driver.find_element_by_xpath("//input[@name='password']").send_keys(d['password'])
    driver.find_element_by_xpath("//button[text()='Sign up']").click()
 time.sleep(8)
+
+#Birthday verification
 driver.find_element_by_xpath("//*[@id='react-root']/section/main/div/div/div[1]/div/div[4]/div/div/span/span[1]/select").click()
 WebDriverWait(driver, 20).until(EC.element_to_be_clickable((By.XPATH, "//*[@id='react-root']/section/main/div/div/div[1]/div/div[4]/div/div/span/span[1]/select/option[4]"))).click()
 
